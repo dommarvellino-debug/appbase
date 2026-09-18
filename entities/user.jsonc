@@ -1,0 +1,71 @@
+{
+  "name": "User",
+  "type": "object",
+  "properties": {
+    "role": {
+      "type": "string",
+      "description": "The role of the user in the app",
+      "enum": [
+        "admin",
+        "user"
+      ]
+    },
+    "bio": {
+      "type": "string",
+      "description": "Short bio shown in the community profile"
+    },
+    "avatar_url": {
+      "type": "string",
+      "description": "Profile picture URL"
+    },
+    "banner_url": {
+      "type": "string",
+      "description": "Profile banner image URL"
+    },
+    "country": {
+      "type": "string",
+      "description": "User's country code (ISO 3166-1 alpha-2)"
+    },
+    "currency": {
+      "type": "string",
+      "description": "User's preferred currency code (ISO 4217)"
+    },
+    "onboarding_completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "goal": {
+      "type": "string",
+      "description": "Comma-separated list of the user's financial goals"
+    },
+    "user_type": {
+      "type": "string",
+      "enum": [
+        "College student",
+        "Graduate student",
+        "Working professional",
+        "Freelancer",
+        "Part-time worker",
+        "Other"
+      ]
+    },
+    "preferred_wallets": {
+      "type": "string",
+      "description": "Comma-separated list of e-wallet types the user uses"
+    },
+    "additional_needs": {
+      "type": "string"
+    },
+    "last_login_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "login_streak": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "role"
+  ]
+}

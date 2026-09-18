@@ -1,0 +1,7 @@
+import { Plus, Trash2 } from 'lucide-react';
+import { useCurrency } from '@/contexts/CurrencyContext';
+export default function GoalCard({ goal, onAdd, onDelete }) {
+  const { formatMoney: money } = useCurrency();
+  const progress=Math.min(100,Math.round((goal.saved_amount/goal.target_amount)*100)||0);
+  return <article className="min-w-[260px] flex-1 rounded-3xl border border-indigo-100 bg-gradient-to-br from-indigo-50 to-violet-50 p-5"><div className="flex items-start justify-between"><div><p className="text-xs font-semibold uppercase tracking-wider text-indigo-500">Dream goal</p><h3 className="mt-1 font-bold">{goal.name}</h3></div><button onClick={()=>onDelete(goal.id)} aria-label="Delete goal" className="text-indigo-300 transition hover:text-rose-500"><Trash2 size={16}/></button></div><div className="mt-6 h-2 overflow-hidden rounded-full bg-white"><div className="h-full rounded-full bg-indigo-600 transition-all duration-500" style={{width:`${progress}%`}}/></div><div className="mt-3 flex items-end justify-between"><div><b>{money(goal.saved_amount)}</b><span className="text-sm text-slate-400"> of {money(goal.target_amount)}</span></div><span className="text-sm font-bold text-indigo-600">{progress}%</span></div><button onClick={()=>onAdd(goal)} className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-white py-2.5 text-sm font-semibold text-indigo-700 shadow-sm transition hover:-translate-y-0.5"><Plus size={16}/>Add savings</button></article>;
+}

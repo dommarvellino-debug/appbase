@@ -1,0 +1,111 @@
+{
+  "name": "EWalletConnection",
+  "type": "object",
+  "properties": {
+    "wallet_name": {
+      "type": "string"
+    },
+    "account_identifier": {
+      "type": "string"
+    },
+    "wallet_type": {
+      "type": "string",
+      "enum": [
+        "PayPal",
+        "Venmo",
+        "Cash App",
+        "Wise",
+        "Revolut",
+        "Apple Pay",
+        "Google Pay",
+        "Samsung Pay",
+        "Paytm",
+        "PhonePe",
+        "Amazon Pay",
+        "GCash",
+        "Maya",
+        "GoPay",
+        "OVO",
+        "DANA",
+        "ShopeePay",
+        "TrueMoney",
+        "GrabPay",
+        "Alipay",
+        "WeChat Pay",
+        "Line Pay",
+        "PayNow",
+        "PromptPay",
+        "MoMo",
+        "ZaloPay",
+        "MPesa",
+        "Airtel Money",
+        "MTN Mobile Money"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "linked",
+        "inactive"
+      ],
+      "default": "linked"
+    }
+  },
+  "required": [
+    "wallet_name",
+    "account_identifier",
+    "wallet_type"
+  ],
+  "rls": {
+    "create": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "user"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}
