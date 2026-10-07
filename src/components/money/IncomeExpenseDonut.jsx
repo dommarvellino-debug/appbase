@@ -2,6 +2,9 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import { TrendingUp, TrendingDown } from 'lucide-react';
 import { useCurrency } from '@/contexts/CurrencyContext';
 
+/**
+ * @param {{ income: number, spent: number }} props
+ */
 export default function IncomeExpenseDonut({ income, spent }) {
   const { formatMoney: money } = useCurrency();
   const data = [

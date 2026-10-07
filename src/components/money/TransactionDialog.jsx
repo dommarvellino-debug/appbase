@@ -4,6 +4,9 @@ import { X } from 'lucide-react';
 
 const categories = ['Food', 'Housing', 'Transport', 'Study', 'Fun', 'Health', 'Income', 'Other'];
 
+/**
+ * @param {{ open: boolean, onClose: () => void, onSave: (transaction: { title: string, amount: number, type: string, category: string, date: string }) => void }} props
+ */
 export default function TransactionDialog({ open, onClose, onSave }) {
   const [form, setForm] = useState({ title: '', amount: '', type: 'expense', category: 'Food', date: new Date().toISOString().slice(0, 10) });
   const submit = (e) => { e.preventDefault(); onSave({ ...form, amount: Number(form.amount) }); setForm({ ...form, title: '', amount: '' }); };
